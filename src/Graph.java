@@ -1,9 +1,10 @@
 import java.rmi.UnexpectedException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
 public class Graph {
-    LinkedList<Integer>[] graph;
+    LinkedList<HashMap>[] graph;
     public Graph(int n)
     {
         if(n<=0)
@@ -11,14 +12,26 @@ public class Graph {
         graph=new LinkedList[n];
         for(int i=0;i<n;i++)
         {
-            graph[i]=new LinkedList<Integer>();
+            graph[i]=new LinkedList<HashMap>();
         }
-        for(int i=1;i<n;i++)
+        for(int i=0;i<n;i++)
         {
-            graph[i-1].add(i);
-            graph[i].add(i-1);
+           graph[i]=new LinkedList<>();
+        }
+        Map m=new HashMap (4);
+        m.put(0,new Door());
+        m.put(1,new Painting());
+        m.put(2,new Mirror());
+        m.put(3,new Chest());
+        for(int i=0;i<n-1;i++)
+        {
+           graph[i].add((HashMap) m);
 
         }
+
+
+
+
 
 
     }
